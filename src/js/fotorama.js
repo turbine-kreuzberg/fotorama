@@ -1,6 +1,6 @@
 jQuery.Fotorama = function ($fotorama, opts) {
-  $HTML = $HTML || $('html');
-  $BODY = $BODY || $('body');
+  $HTML = $('html');
+  $BODY = $('body');
 
   var that = this,
       stamp = $.now(),
@@ -110,7 +110,9 @@ jQuery.Fotorama = function ($fotorama, opts) {
   toDeactivate[NAV_DOT_FRAME_KEY] = [];
   toDetach[STAGE_FRAME_KEY] = {};
 
-  $wrap.addClass(CSS3 ? wrapCss3Class : wrapCss2Class);
+  $wrap
+      .addClass(CSS3 ? wrapCss3Class : wrapCss2Class)
+      .toggleClass(wrapNoControlsClass, !opts.controlsonstart);
 
   fotoramaData.fotorama = this;
 
@@ -230,7 +232,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
     stageShaftTouchTail.noMove = _noMove || o_fade;
     stageShaftTouchTail.noSwipe = _noMove || !opts.swipe;
 
-    !o_transition && $stageShaft.toggleClass(grabClass, !stageShaftTouchTail.noMove && !stageShaftTouchTail.noSwipe);
+    !o_transition && $stageShaft.toggleClass(grabClass, !opts.click && !stageShaftTouchTail.noMove && !stageShaftTouchTail.noSwipe);
     MS_POINTER && $wrap.toggleClass(wrapPanYClass, !stageShaftTouchTail.noSwipe);
   }
 
@@ -247,7 +249,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
 
     o_fade = (opts.transition === 'crossfade' || opts.transition === 'dissolve');
 
-    o_loop = opts.loop && (size > 2 || o_fade) && (!o_transition || o_transition !== 'slide');
+    o_loop = opts.loop && (size > 2 || (o_fade && (!o_transition || o_transition !== 'slide')));
 
     o_transitionDuration = +opts.transitionduration || TRANSITION_DURATION;
 
@@ -1323,7 +1325,6 @@ jQuery.Fotorama = function ($fotorama, opts) {
         pointerFLAG = x && !disableDirrection(getDirection(x)) && opts.click;
 
     if (stageCursor.p !== pointerFLAG
-        && (o_fade || !opts.swipe)
         && $stage.toggleClass(pointerClass, pointerFLAG)) {
       stageCursor.p = pointerFLAG;
       stageCursor.x = x;
@@ -1512,6 +1513,8 @@ jQuery.Fotorama = function ($fotorama, opts) {
     setData();
     setOptions();
 
+    var ok = reset.ok;
+
     if (!reset.i) {
       reset.i = true;
       // Only once
@@ -1519,7 +1522,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
       if (_startindex || opts.hash && location.hash) {
         startIndex = getIndexFromHash(_startindex || location.hash.replace(/^#/, ''), data, that.index === 0 || _startindex, _startindex);
       }
-      activeIndex = repositionIndex = dirtyIndex = lastActiveIndex = startIndex = edgeIndex(startIndex) || 0;/*(o_rtl ? size - 1 : 0)*/;
+      activeIndex = repositionIndex = dirtyIndex = lastActiveIndex = startIndex = edgeIndex(startIndex) || 0;/*(o_rtl ? size - 1 : 0)*///;
     }
 
     if (size) {
@@ -1532,13 +1535,13 @@ jQuery.Fotorama = function ($fotorama, opts) {
       activeIndexes = [];
       detachFrames(STAGE_FRAME_KEY);
 
-      that.show({index: activeIndex, time: 0, reset: reset.ok});
+      reset.ok = true;
+
+      that.show({index: activeIndex, time: 0, reset: ok});
       that.resize();
     } else {
       that.destroy();
     }
-
-    reset.ok = true;
   }
 
   function changeToRtl () {
