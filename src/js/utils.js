@@ -262,6 +262,8 @@ function getDataFromHtml ($el) {
         dataFrame = optionsToLowerCase($.extend($this.data(), {id: $this.attr('id')}));
     if ($this.is('a, img')) {
       getDataFromImg($this, dataFrame, true);
+    } else if($this.has('> img, a > img').length > 0) {
+      getDataFromImg($this.children().eq(0), dataFrame, true);
     } else if (!$this.is(':empty')) {
       getDimensions($this, null, $.extend(dataFrame, {
         html: this,
