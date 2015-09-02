@@ -22,7 +22,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
       $stageFrame = $(),
       $arrPrev = $(div(arrClass + ' ' + arrPrevClass + buttonAttributes)),
       $arrNext = $(div(arrClass + ' ' + arrNextClass + buttonAttributes)),
-      $arrs = $arrPrev.add($arrNext).appendTo($stage),
+      $arrs = $arrPrev.add($arrNext).appendTo(typeof opts.arrowsdomposition !== 'undefined' && opts.arrowsdomposition == 'wrap' ? $wrap : $stage),
       $navWrap = $(div(navWrapClass)),
       $nav = $(div(navClass)).appendTo($navWrap),
       $navShaft = $(div(navShaftClass)).appendTo($nav),
