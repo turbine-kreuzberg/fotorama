@@ -2,6 +2,135 @@
 
 > https://github.com/artpolikarpov/fotorama/releases
 
+## 4.6.3, 31 December 2014
+
+<!--4.6.4:name-->
+Dummy
+<!--/4.6.4:name-->
+
+<!--4.6.4:notes-->
+Just to fix npm & bower packages.
+<!--/4.6.4:notes-->
+
+<!--4.6.3:name-->
+HPPNWYR
+<!--/4.6.3:name-->
+
+<!--4.6.3:notes-->
+
+* #339 Set `box-sizing: content-box;` only for needed blocks inside a fotorama
+* #323 Fix autoplay interval corruption on mousemove
+* #312 Let browsers round dimensions by themselfs
+* #299 No more collecting fotorama usage statistics via foreign iframe.
+
+<!--/4.6.3:notes-->
+
+## 4.6.2, 7 August 2014
+
+<!--4.6.2:name-->
+Hot sorry
+<!--/4.6.2:name-->
+
+<!--4.6.2:notes-->
+Fotorama 4.6.0 broke image fitting into stage (#286, #291, and many more in inbox). This release fixes that.
+
+Some new features, meanwhile:
+* New `enableifsingleframe` option. Default value is `false`. Set it to `true` if you don’t want to disable fotorama navigation when it has only one frame.
+* Smarter autoplay. Now waits until the next frame is fully loaded.
+
+
+<!--/4.6.2:notes-->
+
+## 4.6.0, 7 August 2014
+
+<!--4.6.0:name-->
+
+Position
+
+<!--/4.6.0:name-->
+
+<!--4.6.0:notes-->
+
+* New `position` and `thumbposition` options.
+* Fix some IE7 & IE8 bugs (#273, #279).
+* Fix thumbnail fit.
+* Better auto initialization.
+* Fix blocking event flow in some odd situations.
+* #267 “Play” triangles on video thumbnails are back.
+* Finally fix `clicktransition` behaviour.
+* Fix `fotorama:show` event triggering.
+* Some minor fixes and optimization.
+
+### `position`
+
+Fotorama centers photos by default when fits them into a stage. Now you can change this:
+
+```html
+<!-- Align photos to the left-top corner -->
+<div class="fotorama" data-position="0 0">
+  <img src="1.jpg">
+
+  <!-- Override position for a single photo,
+       center 2.jpg horizontally, and move up by 10px -->
+  <img src="2.jpg" data-position="50% -10px">
+
+  <!-- Show the right-bottom corner of 3.jpg -->
+  <img src="3.jpg" data-position="100% 100%">
+</div>
+```
+
+### `thumbposition`
+
+Works just like `position` but for thumnbails.
+
+<!--/4.6.0:notes-->
+
+## 4.5.2, 23 June 2014
+
+<!--4.5.2:name-->
+
+Three years
+
+<!--/4.5.2:name-->
+
+<!--4.5.2:notes-->
+
+:birthday:
+
+* Keyboard accessibility, allow tabbing on arrows and thumbs.
+* #255 Better styles for printing.
+* New `controlsonstart` option. Set it to `false` if you want controls to appear only after hover or tap.
+* New `thumbfit` option.
+* New `thumbratio:'auto'` option (experimental :skull:).
+* #232 Simplify and fix logic when to trigger show events
+* #236 Fix video loading on https
+* Default cursor is now `pointer` because for desktop users one click is enough to switch the frame. Cursor changes to `grab` only on dragging and swiping.
+* #246 Make fotorama monolithic with z-index.
+* #251 Now fotorama’s dimensions are really the dimensions of the first image (by order, not by loading time).
+* #253 Do not cache `$('html')` and `$('body')` for correct fullscreen in single-page-apps (Meteor, Angular, Derby).
+* Fix `clicktransition` behaviour.
+* #243 Add missing dependencies and repository-setting to package.json
+* Better image fit, work nice with odd width without Retina artefacts.
+* Adjust animations.
+* Disabled trackpad by default.
+* Fix loop conditions.
+
+:candy: :candy: :candy:
+
+Today is the third anniversary of Fotorama.
+
+Using Fotorama? Be sure to drop me a link, wanna see it in action:
+* [:envelope: fotoramajs@gmail.com](fotoramajs@gmail.com)
+
+### Thanks for your thanks :+1:
+
+* PayPal: [fotoramajs@gmail.com](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7M9KK5AQPG6CC)
+* Yandex.Money: [4100139676157](https://money.yandex.ru/direct-payment.xml?receiver=4100139676157)
+* Bitcoin: [1AbXUmE6xzinqKaHu<wbr/>TVFRXtnxffFqvKkka](bitcoin:1AbXUmE6xzinqKaHuTVFRXtnxffFqvKkka)
+* Flattr: [Fotorama](https://flattr.com/thing/1845948/)
+
+<!--/4.5.2:notes-->
+
 ## 4.5.1, 29 March 2014
 
 <!--4.5.1:name-->
